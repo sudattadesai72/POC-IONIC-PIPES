@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pipes Demo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item-group>
+      <ion-item-divider color="light">Lowercase and Uppercase</ion-item-divider>
+       <ion-item><ion-input type="text" placeholder="enter text" [value]="enteredText" [(ngModel)]="enteredText"></ion-input></ion-item>
+       <ion-item>Lowercase:{{enteredText | lowercase}}</ion-item>
+       <ion-item>Uppercase:{{enteredText | uppercase}}</ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Currency</ion-item-divider>
+           <ion-item><ion-input type="number"  placeholder="enter number" min="1" [value]="enteredNumber" [(ngModel)]="enteredNumber"></ion-input></ion-item>
+           <ion-item>USD with Symbol: {{enteredNumber| currency:'USD':true}}</ion-item>
+           <ion-item>INR with five digits: {{enteredNumber | currency:'INR':false:'1.5-5'}}</ion-item>
+     </ion-item-group>
+     
+      <ion-item-group>
+      <ion-item-divider color="light">Date</ion-item-divider>
+          <!--  <ion-item><ion-input type="number"  placeholder="enter number" min="1" [value]="enteredNumber" [(ngModel)]="enteredNumber"></ion-input></ion-item> -->
+           <ion-item>{{today}}</ion-item>
+            <ion-item>{{today|date}}</ion-item>
+             <ion-item>{{today|date:"fullDate"}}</ion-item>
+           <ion-item>{{today | date:"dd/MM/yyyy" | uppercase}}</ion-item>
+     </ion-item-group>
+     
+     <ion-item-group>
+      <ion-item-divider color="light">Decimal</ion-item-divider>
+           <ion-item><ion-input type="number"  placeholder="enter number" min="1" [value]="enteredNumber" [(ngModel)]="enteredNumber"></ion-input></ion-item>
+           <ion-item>(.5-5): {{enteredNumber| number:'.5-5'}}</ion-item>
+           <ion-item>(2.10-10): {{enteredNumber | number:'2.10-10'}}</ion-item>
+            <ion-item>(.3-3): {{enteredNumber | number:'.3-3'}}</ion-item>
+     </ion-item-group>
+   
+      <ion-item-group>
+       <ion-item-divider color="light">Json</ion-item-divider> 
+           <ion-item>Without Json:{{obj}}</ion-item>
+           <ion-item>With Json pipe:{{obj|json}}</ion-item>
+     </ion-item-group>
+    
+     <ion-item-group>
+      <ion-item-divider color="light">Percent</ion-item-divider>
+           <ion-item><ion-input type="number"  placeholder="enter number" min="1" [value]="enteredNumber" [(ngModel)]="enteredNumber"></ion-input></ion-item>
+           <ion-item>(.5-5): {{enteredNumber| percent:'.5-5'}}</ion-item>
+           <ion-item>(3.2-2): {{enteredNumber | percent:'3.2-2'}}</ion-item>
+     </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light">Slice</ion-item-divider>
+         <ion-item><ion-input type="text" placeholder="enter text" [value]="enteredText" [(ngModel)]="enteredText"></ion-input></ion-item>
+         <ion-item>(0:4):{{enteredText | slice:0:4}}</ion-item>
+        <ion-item>(2:5):{{enteredText | slice:2:5}}</ion-item>
+      </ion-item-group>
+
+       <ion-item-group>
+        <ion-item-divider color="light">Async</ion-item-divider>
+         <ion-item>Promise Status:{{promise | async}}</ion-item>
+        <ion-item><button (click)="clickMe()">Click to initiate promise</button></ion-item>
+      </ion-item-group>
+      
+       <ion-item-group>
+        <ion-item-divider color="light">Reverse String (Custom Pipe)</ion-item-divider>
+        <ion-item><ion-input type="text" placeholder="enter text" [value]="enteredText" [(ngModel)]="enteredText"></ion-input></ion-item>
+        <ion-item>{{enteredText | reverseString}}</ion-item>
+      </ion-item-group>
+
+
+</ion-content>
